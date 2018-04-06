@@ -702,3 +702,127 @@ mysql> SELECT
 | Marlon     | Crafford  |     0 | 0.0 | 0.0 | 0.00000 | INACTIVE |
 +------------+-----------+-------+-----+-----+---------+----------+
 7 rows in set (0.01 sec)
+
+-- CHALLENGE 7
+
+mysql> SELECT * FROM series
+    ->     JOIN reviews
+    ->     ON series.id = reviews.series_id
+    ->     JOIN reviewers
+    ->     ON reviewers.id = reviews.reviewer_id;
++----+----------------------+---------------+-----------+----+--------+-----------+-------------+----+------------+-----------+
+| id | title                | released_year | genre     | id | rating | series_id | reviewer_id | id | first_name | last_name |
++----+----------------------+---------------+-----------+----+--------+-----------+-------------+----+------------+-----------+
+|  1 | Archer               |          2009 | Animation |  1 |    8.0 |         1 |           1 |  1 | Thomas     | Stoneman  |
+|  2 | Arrested Development |          2003 | Comedy    |  6 |    8.1 |         2 |           1 |  1 | Thomas     | Stoneman  |
+|  3 | Bob's Burgers        |          2011 | Animation | 11 |    7.0 |         3 |           1 |  1 | Thomas     | Stoneman  |
+|  4 | Bojack Horseman      |          2014 | Animation | 16 |    7.5 |         4 |           1 |  1 | Thomas     | Stoneman  |
+|  5 | Breaking Bad         |          2008 | Drama     | 21 |    9.5 |         5 |           1 |  1 | Thomas     | Stoneman  |
+|  1 | Archer               |          2009 | Animation |  2 |    7.5 |         1 |           2 |  2 | Wyatt      | Skaggs    |
+|  4 | Bojack Horseman      |          2014 | Animation | 19 |    7.6 |         4 |           2 |  2 | Wyatt      | Skaggs    |
+|  5 | Breaking Bad         |          2008 | Drama     | 24 |    9.3 |         5 |           2 |  2 | Wyatt      | Skaggs    |
+|  6 | Curb Your Enthusiasm |          2000 | Comedy    | 26 |    6.5 |         6 |           2 |  2 | Wyatt      | Skaggs    |
+|  6 | Curb Your Enthusiasm |          2000 | Comedy    | 29 |    8.4 |         6 |           2 |  2 | Wyatt      | Skaggs    |
+|  7 | Fargo                |          2014 | Drama     | 31 |    9.1 |         7 |           2 |  2 | Wyatt      | Skaggs    |
+|  8 | Freaks and Geeks     |          1999 | Comedy    | 34 |    7.8 |         8 |           2 |  2 | Wyatt      | Skaggs    |
+|  9 | General Hospital     |          1963 | Drama     | 37 |    5.5 |         9 |           2 |  2 | Wyatt      | Skaggs    |
+| 14 | Stranger Things      |          2016 | Drama     | 45 |    8.5 |        14 |           2 |  2 | Wyatt      | Skaggs    |
+|  1 | Archer               |          2009 | Animation |  3 |    8.5 |         1 |           3 |  3 | Kimbra     | Masters   |
+|  2 | Arrested Development |          2003 | Comedy    |  8 |    8.0 |         2 |           3 |  3 | Kimbra     | Masters   |
+|  3 | Bob's Burgers        |          2011 | Animation | 14 |    7.1 |         3 |           3 |  3 | Kimbra     | Masters   |
+|  4 | Bojack Horseman      |          2014 | Animation | 17 |    7.8 |         4 |           3 |  3 | Kimbra     | Masters   |
+|  5 | Breaking Bad         |          2008 | Drama     | 22 |    9.0 |         5 |           3 |  3 | Kimbra     | Masters   |
+|  6 | Curb Your Enthusiasm |          2000 | Comedy    | 27 |    7.8 |         6 |           3 |  3 | Kimbra     | Masters   |
+|  9 | General Hospital     |          1963 | Drama     | 38 |    6.8 |         9 |           3 |  3 | Kimbra     | Masters   |
+| 13 | Seinfeld             |          1989 | Comedy    | 43 |    8.0 |        13 |           3 |  3 | Kimbra     | Masters   |
+| 14 | Stranger Things      |          2016 | Drama     | 46 |    8.9 |        14 |           3 |  3 | Kimbra     | Masters   |
+|  1 | Archer               |          2009 | Animation |  4 |    7.7 |         1 |           4 |  4 | Domingo    | Cortes    |
+|  2 | Arrested Development |          2003 | Comedy    |  7 |    6.0 |         2 |           4 |  4 | Domingo    | Cortes    |
+|  3 | Bob's Burgers        |          2011 | Animation | 13 |    8.0 |         3 |           4 |  4 | Domingo    | Cortes    |
+|  4 | Bojack Horseman      |          2014 | Animation | 18 |    8.3 |         4 |           4 |  4 | Domingo    | Cortes    |
+|  5 | Breaking Bad         |          2008 | Drama     | 23 |    9.1 |         5 |           4 |  4 | Domingo    | Cortes    |
+|  6 | Curb Your Enthusiasm |          2000 | Comedy    | 28 |    8.8 |         6 |           4 |  4 | Domingo    | Cortes    |
+|  8 | Freaks and Geeks     |          1999 | Comedy    | 33 |    8.5 |         8 |           4 |  4 | Domingo    | Cortes    |
+|  9 | General Hospital     |          1963 | Drama     | 39 |    5.8 |         9 |           4 |  4 | Domingo    | Cortes    |
+| 13 | Seinfeld             |          1989 | Comedy    | 44 |    7.2 |        13 |           4 |  4 | Domingo    | Cortes    |
+| 14 | Stranger Things      |          2016 | Drama     | 47 |    8.9 |        14 |           4 |  4 | Domingo    | Cortes    |
+|  1 | Archer               |          2009 | Animation |  5 |    8.9 |         1 |           5 |  5 | Colt       | Steele    |
+|  2 | Arrested Development |          2003 | Comedy    | 10 |    9.9 |         2 |           5 |  5 | Colt       | Steele    |
+|  3 | Bob's Burgers        |          2011 | Animation | 15 |    8.0 |         3 |           5 |  5 | Colt       | Steele    |
+|  4 | Bojack Horseman      |          2014 | Animation | 20 |    8.5 |         4 |           5 |  5 | Colt       | Steele    |
+|  5 | Breaking Bad         |          2008 | Drama     | 25 |    9.9 |         5 |           5 |  5 | Colt       | Steele    |
+|  6 | Curb Your Enthusiasm |          2000 | Comedy    | 30 |    9.1 |         6 |           5 |  5 | Colt       | Steele    |
+|  7 | Fargo                |          2014 | Drama     | 32 |    9.7 |         7 |           5 |  5 | Colt       | Steele    |
+|  8 | Freaks and Geeks     |          1999 | Comedy    | 36 |    9.3 |         8 |           5 |  5 | Colt       | Steele    |
+|  9 | General Hospital     |          1963 | Drama     | 41 |    4.5 |         9 |           5 |  5 | Colt       | Steele    |
+| 10 | Halt and Catch Fire  |          2014 | Drama     | 42 |    9.9 |        10 |           5 |  5 | Colt       | Steele    |
+|  2 | Arrested Development |          2003 | Comedy    |  9 |    8.4 |         2 |           6 |  6 | Pinkie     | Petit     |
+|  3 | Bob's Burgers        |          2011 | Animation | 12 |    7.5 |         3 |           6 |  6 | Pinkie     | Petit     |
+|  8 | Freaks and Geeks     |          1999 | Comedy    | 35 |    8.8 |         8 |           6 |  6 | Pinkie     | Petit     |
+|  9 | General Hospital     |          1963 | Drama     | 40 |    4.3 |         9 |           6 |  6 | Pinkie     | Petit     |
++----+----------------------+---------------+-----------+----+--------+-----------+-------------+----+------------+-----------+
+47 rows in set (0.00 sec)
+
+mysql>  SELECT 
+    ->     title,
+    ->     rating, 
+    ->     CONCAT(first_name, ' ', last_name) AS 'reviewer'
+    ->     FROM series
+    ->     INNER JOIN reviews
+    ->     ON series.id = reviews.series_id
+    ->     INNER JOIN reviewers
+    ->     ON reviewers.id = reviews.reviewer_id
+    ->     ORDER BY title;
++----------------------+--------+-----------------+
+| title                | rating | reviewer        |
++----------------------+--------+-----------------+
+| Archer               |    8.5 | Kimbra Masters  |
+| Archer               |    7.7 | Domingo Cortes  |
+| Archer               |    8.9 | Colt Steele     |
+| Archer               |    8.0 | Thomas Stoneman |
+| Archer               |    7.5 | Wyatt Skaggs    |
+| Arrested Development |    6.0 | Domingo Cortes  |
+| Arrested Development |    9.9 | Colt Steele     |
+| Arrested Development |    8.1 | Thomas Stoneman |
+| Arrested Development |    8.4 | Pinkie Petit    |
+| Arrested Development |    8.0 | Kimbra Masters  |
+| Bob's Burgers        |    8.0 | Colt Steele     |
+| Bob's Burgers        |    7.0 | Thomas Stoneman |
+| Bob's Burgers        |    7.5 | Pinkie Petit    |
+| Bob's Burgers        |    7.1 | Kimbra Masters  |
+| Bob's Burgers        |    8.0 | Domingo Cortes  |
+| Bojack Horseman      |    7.5 | Thomas Stoneman |
+| Bojack Horseman      |    7.8 | Kimbra Masters  |
+| Bojack Horseman      |    7.6 | Wyatt Skaggs    |
+| Bojack Horseman      |    8.3 | Domingo Cortes  |
+| Bojack Horseman      |    8.5 | Colt Steele     |
+| Breaking Bad         |    9.0 | Kimbra Masters  |
+| Breaking Bad         |    9.3 | Wyatt Skaggs    |
+| Breaking Bad         |    9.1 | Domingo Cortes  |
+| Breaking Bad         |    9.9 | Colt Steele     |
+| Breaking Bad         |    9.5 | Thomas Stoneman |
+| Curb Your Enthusiasm |    7.8 | Kimbra Masters  |
+| Curb Your Enthusiasm |    6.5 | Wyatt Skaggs    |
+| Curb Your Enthusiasm |    8.8 | Domingo Cortes  |
+| Curb Your Enthusiasm |    9.1 | Colt Steele     |
+| Curb Your Enthusiasm |    8.4 | Wyatt Skaggs    |
+| Fargo                |    9.7 | Colt Steele     |
+| Fargo                |    9.1 | Wyatt Skaggs    |
+| Freaks and Geeks     |    9.3 | Colt Steele     |
+| Freaks and Geeks     |    8.8 | Pinkie Petit    |
+| Freaks and Geeks     |    8.5 | Domingo Cortes  |
+| Freaks and Geeks     |    7.8 | Wyatt Skaggs    |
+| General Hospital     |    4.3 | Pinkie Petit    |
+| General Hospital     |    5.8 | Domingo Cortes  |
+| General Hospital     |    5.5 | Wyatt Skaggs    |
+| General Hospital     |    6.8 | Kimbra Masters  |
+| General Hospital     |    4.5 | Colt Steele     |
+| Halt and Catch Fire  |    9.9 | Colt Steele     |
+| Seinfeld             |    8.0 | Kimbra Masters  |
+| Seinfeld             |    7.2 | Domingo Cortes  |
+| Stranger Things      |    8.5 | Wyatt Skaggs    |
+| Stranger Things      |    8.9 | Kimbra Masters  |
+| Stranger Things      |    8.9 | Domingo Cortes  |
++----------------------+--------+-----------------+
+47 rows in set (0.00 sec)
+
